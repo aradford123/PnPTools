@@ -1,0 +1,32 @@
+FileSync utility keeps an external directory of PNP config, image and template files synced to APIC-EM
+
+It requires python3 for the uniq library.
+
+Also recommend using virtualenv.  Use the following commands as examples
+
+
+virtualenv -p python3 env
+source env/bin/activate
+
+To install:
+pip install -r requirements.txt
+
+You will need to edit the apic_config.py file to change your credentials.
+
+You will also need a directory that has (up to three subdirectories).
+
+For example if your PnP directory is called pnp_files, you would have the following structure
+pnp_files/
+    ├── config/
+    ├── image/
+    ├── template/
+
+Place config files in pnp_files/config, template files in pnp_files/template etc.
+
+Use src/file_sync.py to check if a file exists on the controller, update it if it does, or upload it if it is not present
+
+
+To run:
+src/file_sync.py
+
+
