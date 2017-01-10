@@ -1,0 +1,5 @@
+HOSTNAME,serialNumber,platformId,site,USERVLAN,VoiceVlan,management,DISTRO,ManagementIP,stackCount,template,imageFile
+fourswitch,12345678901,3850-stack,Sydney,100,300,90,distribution2-2-2,10.10.10.220,4,four_switch.jnja,cat3k_caa-universalk9.SPA.03.06.05.E.152-2.E5.bin
+singleswitch,12345678902,3850-stack,Sydney,100,300,90,distribution2-2-2,10.10.10.220,1,single_switch.jnja,cat3k_caa-universalk9.SPA.03.06.05.E.152-2.E5.bin
+twoswitch,12345678903,3850-stack,Sydney,100,300,90,distribution2-2-2,10.10.10.220,2,two_switch.jnja,cat3k_caa-universalk9.SPA.03.06.05.E.152-2.E5.bin
+

@@ -1,0 +1,26 @@
+
+{% macro user_port() %}
+ switchport access vlan {{ USERVLAN }}
+ switchport mode access
+ switchport voice {{ VoiceVlan }}
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+{% endmacro %}
+
+
+
+{% macro ap_port() %}
+ description AP mgmt
+ switchport access vlan {{ management }}
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+{% endmacro %}
+
+
+{% macro uplink_trunk() %}
+ description to {{ DISTRO }}
+ switchport trunk native vlan {{ management }}
+ switchport trunk allowed vlan {{ USERVLAN }},{{ VoiceVlan }},{{ management }}
+ switchport mode trunk
+{% endmacro %}

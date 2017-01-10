@@ -1,0 +1,17 @@
+{% from "macros.jnja" import user_port, ap_port, uplink_trunk with context%}
+{% extends "base.jnja" %}
+
+{% block interfaces %}
+
+{% for stack_num in range(1,3) %}
+interface range g{{ stack_num }}/0/1 - 40
+{{ user_port() }}
+
+int range g{{ stack_num }}/0/45 - 48
+{{ ap_port() }}
+
+int ten{{ stack_num }}/1/4
+{{ uplink_trunk() }}
+
+{% endfor %}
+{% endblock %}

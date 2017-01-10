@@ -1,0 +1,85 @@
+!
+!
+no service pad
+service timestamps debug datetime msec localtime
+service timestamps log datetime msec localtime
+service password-encryption
+!
+hostname {{ HOSTNAME }}
+
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret xxxxxxxxxxxxxxxxxxxx
+!
+!
+!
+! need to define aaa server to use aaa
+!aaa new-model
+!
+!
+!aaa authentication login default group tacacs+ enable none
+!aaa authentication login console enable none
+!aaa authentication enable default group tacacs+ enable none
+!aaa authorization exec default group tacacs+ none 
+!aaa authorization exec console none
+! this causes pnp issues
+!aaa authorization commands 15 default group tacacs+ none
+!
+!
+!
+aaa session-id common
+clock timezone EST 10
+clock summer-time EDT recurring 1 Sun Oct 2:00 1 Sun Apr 2:00
+!
+vtp mode off
+!
+no ip source-route
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan {{ USERVLAN }}
+ name uservlan
+!
+!
+ip ssh version 2
+!
+!
+{% block interfaces %}
+{% endblock %}
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan{{ management }}
+ ip address {{ ManagementIP }} 255.255.255.0
+ no ip route-cache
+!
+no ip http server
+no ip http secure-server
+
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class 4 in
+ exec-timeout 20 0
+password 7 xxxxxxxxxxxxxx
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ access-class 4 in
+ exec-timeout 5 0
+password 7 0xxxxxxxxxxxxxx
+ transport input ssh
+ transport output ssh
+!
+end
+
+ 
