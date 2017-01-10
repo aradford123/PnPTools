@@ -1,1 +1,4 @@
 There are several tools in this directory for PnP server running in APIC-EM
+
+PnPConfigTemplator: example scripts using jinja2 templates
+PnPFileSync: keeps config, template and images files in sync with controller.  User can edit config files off box, then sync to APIC-EM
