@@ -14,7 +14,7 @@ When rules are created, it is based on the number of switches in the stack.
 The hosts.csv file contains the following variables
 HOSTNAME,serialNumber,platformId,site,USERVLAN,VoiceVlan,management,DISTRO,ManagementIP,stackCount,template,imageFile
 
-In theory template could be derived from stackCount and platformId
+In theory "template" could be derived from "stackCount" and "platformId"
 
 ## 00test_jinja.py
 
