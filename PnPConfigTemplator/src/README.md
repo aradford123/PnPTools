@@ -17,7 +17,7 @@ HOSTNAME,serialNumber,platformId,site,USERVLAN,VoiceVlan,management,DISTRO,Manag
 In theory "template" could be derived from "stackCount" and "platformId"
 
 ## 00test_jinja.py
-
+validates the creation of the configuration files.  It does not upload them to APIC-EM, or create rules
 
 ## 10_create_and_upload.py
 This requires an argument of an inventory file to use.
