@@ -8,6 +8,14 @@ Contains two files.
 Contains the inventory files
 Also contains directories for templates and configuration files
 
+The templates are built from a base.jnja file.  There are specific templates for 1-2-3-4 switch stacks.  The interfaces are generated dynamically.
+
+When rules are created, it is based on the number of switches in the stack.
+The hosts.csv file contains the following variables
+HOSTNAME,serialNumber,platformId,site,USERVLAN,VoiceVlan,management,DISTRO,ManagementIP,stackCount,template,imageFile
+
+In theory template could be derived from stackCount and platformId
+
 ## 00test_jinja.py
 
 
