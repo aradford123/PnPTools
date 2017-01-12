@@ -30,9 +30,21 @@ It the creates the project (if required)
 
 and creates a rule in the project for the specific device.  The rule contains all information required for PnP
 
+To run this, you need to specify an inventory file as the first argument
+
+```
+./10_create_and_upload.py work_files/inventory.csv
+```
+
 ## 12_clean_up_all.py
 This requires an argument of an inventory file to use.  All projects in this inventory file will be removed.
 NOTE: You should not have same project in two different inventory files
+
+For example
+
+```
+./12_clean_up_all.py work_files/inventory.csv
+```
 
 ## list_all_projects
 list all projects and rules
