@@ -26,6 +26,10 @@ Place config files in pnp_files/config, template files in pnp_files/template etc
 Use src/file_sync.py to check if a file exists on the controller, update it if it does, or upload it if it is not present
 
 
+apic_config.py has the name and login credentials for APIC-EM.  NOTE:  You can also use environment variables for these parameters too.
+   APIC, APIC_USER, APIC_PASSWORD will be looked at first.
+   export APIC_PASSWORD="mysecrete" for example
+
 To run:
 src/file_sync.py
 

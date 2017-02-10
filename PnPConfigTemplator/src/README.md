@@ -1,7 +1,9 @@
 
 ## Config Directory
 Contains two files.  
-- apic_config.py has the name and login credentials for APIC-EM
+- apic_config.py has the name and login credentials for APIC-EM.  NOTE:  You can also use environment variables for these parameters too.
+   APIC, APIC_USER, APIC_PASSWORD will be looked at first.
+   export APIC_PASSWORD="mysecrete" for example
 - pnp_config.py has the directory for the templates and configuration files as they are generated.  The default is the work_files directory
 
 ## work_files
