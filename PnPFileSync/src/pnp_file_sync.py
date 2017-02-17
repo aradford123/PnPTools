@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from login import login
+import hashlib
 from apic_config import DIR
 import os
 
@@ -39,6 +40,16 @@ def check_namespace(apic, namespace):
     else:
         return False
 
+def get_sha1(file):
+    BLOCKSIZE = 65536
+    hasher = hashlib.sha1()
+    with open(file, 'rb') as afile:
+        buf = afile.read(BLOCKSIZE)
+        while len(buf) > 0:
+            hasher.update(buf)
+            buf = afile.read(BLOCKSIZE)
+    return(hasher.hexdigest())
+
 def process_namespace(apic, namespace):
     if check_namespace(apic, namespace):
         print("NameSpace:{namespace}:valid".format(namespace=namespace))
@@ -58,6 +69,9 @@ def process_namespace(apic, namespace):
             result = f.upload()
             print("Uploaded File:{file} ({id})".format(file=result.response.name,id=result.response.id))
         else:
+            # need to look at checksum to see if need to update
+            sha1 = get_sha1(rootDir+ '/' + filename)
+            print (filename, sha1)
             result = f.update()
             print("Updated File:{file} ({id})".format(file=result.response.name, id=result.response.id))
 
