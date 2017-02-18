@@ -13,6 +13,7 @@ class File(object):
         self.namespace = namespace
         self.path = path + "/" + name
         self.fileid = None
+        self.sha1 = None
 
     def update(self):
         file_result = self.apic.file.updateFile(nameSpace=self.namespace, fileUpload=self.path, fileId=self.fileid)
@@ -28,8 +29,9 @@ class File(object):
 
     def present(self):
         files = self.apic.file.getFilesByNamespace(nameSpace=self.namespace)
-        fileid_list = [file.id for file in files.response if file.name == self.name]
-        self.fileid =  None if fileid_list == [] else fileid_list[0]
+        fileid_list = [(file.id, file.sha1Checksum) for file in files.response if file.name == self.name]
+        self.fileid =  None if fileid_list == [] else fileid_list[0][0]
+        self.sha1 = None if fileid_list == [] else fileid_list[0][1]
         return self.fileid
 
 
