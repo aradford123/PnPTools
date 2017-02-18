@@ -78,7 +78,7 @@ def process_namespace(apic, namespace):
                 result = f.update()
                 print("Updated File:{file} ({id})".format(file=result.response.name, id=result.response.id))
             else:
-                print ("Skipping File:{file} ({id}) SHA1hash:{sha1}".format(file=filename, id=f.id,sha1=sha1))
+                print ("Skipping File:{file} ({id}) SHA1hash:{sha1}".format(file=filename, id=f.fileid,sha1=sha1))
 
 def main():
     apic = login()
