@@ -74,10 +74,11 @@ def process_namespace(apic, namespace):
             # need to look at checksum to see if need to update
             sha1 = get_sha1(rootDir+ '/' + filename)
             print (filename, sha1, f.sha1)
-            if sha1 == f.sha1:
-                print("skip")
-            result = f.update()
-            print("Updated File:{file} ({id})".format(file=result.response.name, id=result.response.id))
+            if sha1 != f.sha1:
+                result = f.update()
+                print("Updated File:{file} ({id})".format(file=result.response.name, id=result.response.id))
+            else:
+                print ("Skipping File:{file} ({id}) SHA1hash:{sha1}".format(file=filename, id=f.id,sha1=sha1))
 
 def main():
     apic = login()
