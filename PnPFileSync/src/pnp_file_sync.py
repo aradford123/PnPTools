@@ -73,7 +73,9 @@ def process_namespace(apic, namespace):
         else:
             # need to look at checksum to see if need to update
             sha1 = get_sha1(rootDir+ '/' + filename)
-            print (filename, sha1)
+            print (filename, sha1, f.sha1)
+            if sha1 == f.sha1:
+                print("skip")
             result = f.update()
             print("Updated File:{file} ({id})".format(file=result.response.name, id=result.response.id))
 
