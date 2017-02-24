@@ -4,12 +4,14 @@ It requires python3 for the uniq library.
 
 Also recommend using virtualenv.  Use the following commands as examples
 
-
+```
 virtualenv -p python3 env
 source env/bin/activate
-
+```
 To install:
+```
 pip install -r requirements.txt
+```
 
 You will need to edit the apic_config.py file to change your credentials.
 NOTE:  You can also use environment variables for these parameters too.

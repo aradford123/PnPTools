@@ -84,6 +84,7 @@ def main():
     apic = login()
     for namespace in ["config", "template", "image"]:
         process_namespace(apic, namespace)
+        print()
 
 if __name__ == "__main__":
     main()
